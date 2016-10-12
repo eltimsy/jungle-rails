@@ -1,0 +1,13 @@
+Welcome to jungle-rails.com, <%= @order.id %>
+===============================================
+
+You have successfully ordered items,
+your email is: <%= @order.email %>.
+
+You ordered:
+<% @order.line_items.each do |line_item| %>
+<%= line_item.quantity %><%= line_item.product.name %>
+<% end %>
+Your total is: <%= @order.total_cents/100 %>
+
+Have a nice day!
