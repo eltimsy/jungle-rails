@@ -27,12 +27,23 @@
         <dl class="dl-horizontal">
           <dt><h2>Reviews</h2></dt>
           <dd></dd>
-          <% @product.reviews.each do |review| %>
-          <dt><%= review.user.first_name %> <%= review.user.last_name %>:</dt>
+          <% if current_user %>
+            <%= form_for [@product, @review]  do |f| %>
+            <dt><%= f.label :description %></dt>
+            <dd><%= f.text_field :description, class: 'form-control' %></dd>
+            <dt><%= f.select(:rating, [[1],[2],[3],[4],[5]]) %></dt>
+            <dd><%= submit_tag "Write a review" %></dd> <br><br>
+            <%  end %>
+          <% end %>
+          <% @reviews.each do |review| %>
+            <dt><%= review.user.first_name %> <%= review.user.last_name %>:</dt>
             <dd><%= review.description %></dd>
-          <dt>Rating:</dt>
-            <dd><%= review.rating %>/5</dd><br>
-            <% end %>
+            <dt>Rating:</dt>
+            <dd><%= review.rating %>/5</dd>
+            <dt>Delete:</dt>
+            <dd><%= link_to fa_icon('trash'), review_path(review), class: 'btn btn-sm btn-danger', method: :delete, data: { confirm: "Are you sure?" } %></dd>
+            <br>
+          <% end %>
           </dl>
       </div>
 
