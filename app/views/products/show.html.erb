@@ -25,16 +25,22 @@
         </dl>
 
         <dl class="dl-horizontal">
-          <dt><h2>Reviews</h2></dt>
-          <dd></dd>
+          <br><br><br>
           <% if current_user %>
             <%= form_for [@product, @review]  do |f| %>
-            <dt><%= f.label :description %></dt>
-            <dd><%= f.text_field :description, class: 'form-control' %></dd>
-            <dt><%= f.select(:rating, [[1],[2],[3],[4],[5]]) %></dt>
-            <dd><%= submit_tag "Write a review" %></dd> <br><br>
+            <dt>
+              Comments:
+            </dt>
+            <dd><%= f.text_area :description, class: 'review-text' %></dd>
+            <dt></dt>
+            <dd>
+              <%= f.submit "Write a review", class: 'submit-review' %>
+              <%= f.select(:rating, [[1],[2],[3],[4],[5]], {}, {:class => 'review-select'})%>
+            </dd> <br><br>
             <%  end %>
           <% end %>
+          <dt></dt>
+          <dd><h2>Reviews</h2></dd>
           <% @reviews.each do |review| %>
             <dt><%= review.user.first_name %> <%= review.user.last_name %>:</dt>
             <dd><%= review.description %></dd>
