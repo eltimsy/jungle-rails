@@ -129,5 +129,74 @@ cat3.products.create!({
   price: 2_483.75
 })
 
+ puts "Creating Users"
+
+User.destroy_all
+
+User.create!({
+  first_name: Faker::Name.first_name,
+  last_name: Faker::Name.last_name,
+  email: Faker::Internet.safe_email,
+  password_digest: Faker::Internet.password(10)
+})
+
+User.create!({
+  first_name: Faker::Name.first_name,
+  last_name: Faker::Name.last_name,
+  email: Faker::Internet.safe_email,
+  password_digest: Faker::Internet.password(10)
+})
+
+User.create!({
+  first_name: Faker::Name.first_name,
+  last_name: Faker::Name.last_name,
+  email: Faker::Internet.safe_email,
+  password_digest: Faker::Internet.password(10)
+})
+
+User.create!({
+  first_name: Faker::Name.first_name,
+  last_name: Faker::Name.last_name,
+  email: Faker::Internet.safe_email,
+  password_digest: Faker::Internet.password(10)
+})
+puts "creating reviews"
+
+Review.destroy_all
+
+prod1 = Product.find(1)
+prod2 = Product.find(2)
+prod3 = Product.find(3)
+
+prod1.reviews.create!({
+    user_id: 1,
+    description: 'It is awesome',
+    rating: 5
+})
+
+
+prod2.reviews.create!({
+  user_id: 2,
+  description: 'Garbage',
+  rating: 1
+})
+
+prod3.reviews.create!({
+  user_id: 3,
+  description: 'Meh',
+  rating: 3
+})
+prod3.reviews.create!({
+  user_id: 1,
+  description: 'Not much to say',
+  rating: 4
+})
+prod3.reviews.create!({
+  user_id: 4,
+  description: 'Crazy hat bros',
+  rating: 5
+})
+
+
 
 puts "DONE!"
