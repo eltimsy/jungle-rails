@@ -1,0 +1,37 @@
+<dl class="dl-horizontal">
+  <br><br><br>
+  <% if current_user %>
+    <%= form_for [@product, @review]  do |f| %>
+    <dt>
+      Comments:
+    </dt>
+    <dd><%= f.text_area :description, class: 'review-text' %></dd>
+    <dt></dt>
+    <dd>
+      <%= f.submit "Write a review", class: 'submit-review' %>
+      <%= f.select(:rating, [[1],[2],[3],[4],[5]], {}, {:class => 'review-select'})%>
+    </dd> <br><br>
+    <%  end %>
+  <% end %>
+  <dt></dt>
+  <dd><h2 class="review-header">Reviews</h2></dd>
+  <% @reviews.each do |review| %>
+    <dt><%= review.user.first_name %> <%= review.user.last_name %>:</dt>
+    <dd><%= review.description %></dd>
+    <dt>Rating:</dt>
+    <dd>
+      <% (1..5).each do |i| %>
+        <% if (i <= review.rating) %>
+          <i style="color: #c5bc2d" class="fa fa-star"aria-hidden="true"></i>
+        <% else %>
+          <i class="fa fa-star-o" aria-hidden="true"></i>
+        <% end %>
+      <% end %>
+    </dd>
+    <% if current_user.first_name == review.user.first_name %>
+      <dt>Delete:</dt>
+      <dd><%= link_to fa_icon('trash'), review_path(review), class: 'btn btn-sm btn-danger', method: :delete, data: { confirm: "Are you sure?" } %></dd>
+      <% end %>
+    <br>
+  <% end %>
+  </dl>

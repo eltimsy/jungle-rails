@@ -5,7 +5,7 @@
   </header>
 
   <div class="order-summary jumbotron">
-    <h4>Thank you for your order!</h4>
+    <h4><%= current_user.first_name %> here is your order!</h4>
     <div class="panel panel-default items">
       <table class="table table-bordered">
         <thead>
@@ -18,23 +18,7 @@
         </thead>
         <tbody>
           <% @order.line_items.each do |line_item| %>
-            <tr>
-              <td>
-                <img src="<%= line_item.product.image.tiny %>"/>
-              </td>
-              <td>
-                <h4><%= line_item.product.name %></h4>
-              </td>
-              <td>
-                <%= line_item.product.price %>
-              </td>
-              <td>
-                <%= line_item.quantity %>
-              </td>
-              <td>
-                <%= line_item.product.price * line_item.quantity %>
-              </td>
-            </tr>
+            <%= render 'item', line_item: line_item %>
           <% end %>
         </tbody>
         <tfoot>
@@ -43,7 +27,7 @@
               TOTAL:
             </th>
             <th>
-              <%= @order.total_cents/100 %>
+              <%= number_with_precision(@order.total_cents/100, :precision => 2) %>
             </th>
           </tr>
           <tr>

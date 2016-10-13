@@ -43,13 +43,18 @@
         <li class="dropdown">
            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
 
-             <span class="text-danger"><%= fa_icon '', text: 'Users' %></span>
+             <span class="text-primary">
+              <% if current_user %>
+                <%= current_user.first_name %>
+              <% else %>
+                <%= fa_icon '', text: 'Users' %>
+              <% end %>
+              </span>
              <span class="caret"></span>
            </a>
 
            <ul class="dropdown-menu">
              <% if current_user %>
-              <li>Signed in as <%= current_user.first_name %></li>
               <li><%= link_to "Logout", '/logout' %></li>
             <% else %>
               <li><%= link_to 'Login', '/login' %></li>

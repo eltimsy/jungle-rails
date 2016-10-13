@@ -1,4 +1,4 @@
-Welcome to jungle-rails.com, <%= @order.id %>
+Welcome to jungle-rails.com, <%= current_user.first_name %>
 ===============================================
 
 You have successfully ordered items,
@@ -8,6 +8,6 @@ You ordered:
 <% @order.line_items.each do |line_item| %>
 <%= line_item.quantity %><%= line_item.product.name %>
 <% end %>
-Your total is: <%= @order.total_cents/100 %>
+Your total is: <%= number_with_precision(@order.total_cents/100, :precision => 2)%>
 
 Have a nice day!
