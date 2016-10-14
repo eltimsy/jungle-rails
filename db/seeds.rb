@@ -1,3 +1,4 @@
+require 'byebug'
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
 #
@@ -7,6 +8,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 puts "Seeding Data ..."
+
 
 # Helper functions
 def open_asset(file_name)
@@ -196,7 +198,6 @@ prod3.reviews.create!({
   description: 'Crazy hat bros',
   rating: 5
 })
-
 
 
 puts "DONE!"
