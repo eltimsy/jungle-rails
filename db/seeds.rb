@@ -139,28 +139,28 @@ User.create!({
   first_name: Faker::Name.first_name,
   last_name: Faker::Name.last_name,
   email: Faker::Internet.safe_email,
-  password_digest: Faker::Internet.password(10)
+  password: Faker::Internet.password(10)
 })
 
 User.create!({
   first_name: Faker::Name.first_name,
   last_name: Faker::Name.last_name,
   email: Faker::Internet.safe_email,
-  password_digest: Faker::Internet.password(10)
+  password: Faker::Internet.password(10)
 })
 
 User.create!({
   first_name: Faker::Name.first_name,
   last_name: Faker::Name.last_name,
   email: Faker::Internet.safe_email,
-  password_digest: Faker::Internet.password(10)
+  password: Faker::Internet.password(10)
 })
 
 User.create!({
   first_name: Faker::Name.first_name,
   last_name: Faker::Name.last_name,
   email: Faker::Internet.safe_email,
-  password_digest: Faker::Internet.password(10)
+  password: Faker::Internet.password(10)
 })
 puts "creating reviews"
 
