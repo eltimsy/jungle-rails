@@ -1,7 +1,7 @@
 # Jungle
 
 A mini e-commerce application built with Rails 4.2 for purposes of teaching Rails by example.
-<br><em># Website</em>: https://sheltered-sierra-75907.herokuapp.com/
+<br><strong># Website</strong>: https://sheltered-sierra-75907.herokuapp.com/
 
 ## Setup
 
