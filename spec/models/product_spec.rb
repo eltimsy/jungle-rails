@@ -4,7 +4,7 @@ require 'pp'
 RSpec.describe Product, type: :model do
   describe Product do
     it 'should create a product if all fields are correct' do
-      @category = Category.find_by name: 'Electronics'
+      @category = Category.create! name: 'Apparel'
       @product = Product.new(
       name: 'abc',
       price: 10,
@@ -16,7 +16,7 @@ RSpec.describe Product, type: :model do
     end
     describe 'Validations' do
       it 'should give an error if name is missing' do
-        @category = Category.find_by name: "Electronics"
+        @category = Category.create! name: 'Apparel'
         @product = Product.new()
         @product.category = @category
         @product.name = ""
@@ -24,7 +24,7 @@ RSpec.describe Product, type: :model do
         expect(@product.errors[:name]).to include("can't be blank")
       end
       it 'should give an error if price is missing' do
-        @category = Category.find_by name: "Electronics"
+        @category = Category.create! name: 'Apparel'
         @product = Product.new()
         @product.category = @category
         @product.price = nil
@@ -32,7 +32,7 @@ RSpec.describe Product, type: :model do
         expect(@product.errors[:price]).to include("is not a number")
       end
       it 'should give an error if quantity is missing' do
-        @category = Category.find_by name: "Electronics"
+        @category = Category.create! name: 'Apparel'
         @product = Product.new()
         @product.category = @category
         @product.quantity = nil
@@ -40,7 +40,7 @@ RSpec.describe Product, type: :model do
         expect(@product.errors[:quantity]).to include("can't be blank")
       end
       it 'should give an error if category is missing' do
-        @category = Category.find_by name: "Electronics"
+        @category = Category.create! name: 'Apparel'
         @product = Product.new()
         @product.valid?
         expect(@product.errors[:category]).to include("can't be blank")

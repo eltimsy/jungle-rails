@@ -4,7 +4,7 @@ require 'pp'
 RSpec.describe Order, type: :model do
   describe 'After creation' do
     before :each do
-      @category = Category.find_by name: 'Electronics'
+      @category = Category.create! name: 'Apparel'
       # Setup at least two products with different quantities, names, etc
       @product1 = Product.create!(
       name: "abc",
