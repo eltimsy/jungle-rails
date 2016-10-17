@@ -16,7 +16,6 @@ RSpec.describe User, type: :model do
       it 'should give an error if password or password_confirmation is missing' do
         @user = User.new()
         @user.password_confirmation = "aldkfjalsdjkfl"
-        pp @user
         @user.valid?
         expect(@user.errors[:password]).to include("can't be blank")
       end
@@ -53,28 +52,22 @@ RSpec.describe User, type: :model do
       end
     end
     describe '.authenticate_with_credentials' do
-      it 'should login if login exists' do
+
+      before do
         @user = User.create!(
-          first_name: "abc",
-          last_name: "cde",
-          email: "abc@abc.com",
-          password: "1234")
+        first_name: "abc",
+        last_name: "cde",
+        email: "abc@abc.com",
+        password: "1234")
+      end
+
+      it 'should login if login exists' do
         expect(User.authenticate_with_credentials("abc@abc.com","1234")).to be
       end
       it 'should login if user puts spaces in password or email' do
-        @user = User.create!(
-          first_name: "abc",
-          last_name: "cde",
-          email: "abc@abc.com",
-          password: "1234")
         expect(User.authenticate_with_credentials("abc@abc.com "," 1234")).to be
       end
       it 'should login if user uses different cases for email' do
-        @user = User.create!(
-          first_name: "abc",
-          last_name: "cde",
-          email: "abc@abc.com",
-          password: "1234")
         expect(User.authenticate_with_credentials("abC@aBc.com "," 1234")).to be
       end
 
