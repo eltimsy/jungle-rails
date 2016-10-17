@@ -6,9 +6,9 @@ RSpec.describe Product, type: :model do
     it 'should create a product if all fields are correct' do
       @category = Category.create! name: 'Apparel'
       @product = Product.new(
-      name: 'abc',
-      price: 10,
-      quantity: 1)
+        name: 'abc',
+        price: 10,
+        quantity: 1)
       @product.category = @category
       # pp @product
       @product.valid?

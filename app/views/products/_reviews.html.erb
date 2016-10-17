@@ -22,16 +22,16 @@
     <dd>
       <% (1..5).each do |i| %>
         <% if (i <= review.rating) %>
-          <i style="color: #c5bc2d" class="fa fa-star"aria-hidden="true"></i>
+          <i style="color: #c5bc2d" class="fa fa-star" aria-hidden="true"></i>
         <% else %>
           <i class="fa fa-star-o" aria-hidden="true"></i>
         <% end %>
       <% end %>
     </dd>
-    <% if current_user.first_name == review.user.first_name %>
+    <% if current_user && current_user.first_name == review.user.first_name %>
       <dt>Delete:</dt>
       <dd><%= link_to fa_icon('trash'), review_path(review), class: 'btn btn-sm btn-danger', method: :delete, data: { confirm: "Are you sure?" } %></dd>
-      <% end %>
+    <% end %>
     <br>
   <% end %>
   </dl>
