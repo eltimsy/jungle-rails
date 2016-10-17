@@ -24,10 +24,9 @@ RSpec.feature "ProductDetails", type: :feature, js: true do
    page_text = page.all('article.product a').first.text
    click_link(page_text)
 
-   sleep(8)
 
    # DEBUG / VERIFY
-   save_screenshot
+  #  save_screenshot
    expect(page).to have_css 'section.products-show', count: 1
    expect(page).to have_css 'article.product-detail', count: 1
 
